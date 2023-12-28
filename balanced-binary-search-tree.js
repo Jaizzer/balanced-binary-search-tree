@@ -38,4 +38,18 @@ class Tree {
         }
         return root;
     }
+
+    find(data) {
+        let currentNode = this.root;
+        while (currentNode !== null) {
+            if (data === currentNode.value) {
+                return currentNode;
+            } else if (data < currentNode.value) {
+                currentNode = currentNode.left;
+            } else {
+                currentNode = currentNode.right;
+            }
+        }
+        return null;
+    }
 }
