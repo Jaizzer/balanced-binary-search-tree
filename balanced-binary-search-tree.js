@@ -26,4 +26,16 @@ class Tree {
 
         return root;
     }
+
+    insert(data, root = this.root) {
+        if (root === null) {
+            return new Node(data);
+        }
+        if (data < root.value) {
+            root.left = this.insert(data, root.left);
+        } else {
+            root.right = this.insert(data, root.right);
+        }
+        return root;
+    }
 }
