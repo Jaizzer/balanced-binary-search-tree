@@ -192,4 +192,22 @@ class Tree {
 
         return [parent, ...left, ...right];
     }
+
+    postOrder(callback, Node = this.root) {
+        // Base case.
+        if (Node === null) {
+            return [];
+        }
+
+        // Traverse left
+        let left = this.postOrder(callback, Node.left);
+
+        // Traverse right.
+        let right = this.postOrder(callback, Node.right);
+
+        // Apply callback function if it exists, else just get the value.
+        let parent = callback ? callback(Node.value) : Node.value;
+
+        return [...left, ...right, parent];
+    }
 }
