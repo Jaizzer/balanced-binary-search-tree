@@ -133,4 +133,28 @@ class Tree {
         }
         return null;
     }
+
+    levelOrder(callback) {
+        let queue = [this.root];
+        let array = [];
+        let queueIsEmpty = false;
+
+        // Apply the callback function in a level order traversal using queue.
+        while (!queueIsEmpty) {
+            if (callback) {
+                array.push(callback(queue[0]));
+            } else {
+                array.push(queue[0].value);
+            }
+            if (queue[0].left) {
+                queue.push(queue[0].left);
+            }
+            if (queue[0].right) {
+                queue.push(queue[0].right);
+            }
+            queue.shift();
+            queueIsEmpty = queue.length === 0;
+        }
+        return array;
+    }
 }
