@@ -157,4 +157,21 @@ class Tree {
         }
         return array;
     }
+
+    inOrder(callback, Node = this.root) {
+        // Base case.
+        if (Node === null) {
+            return [];
+        }
+        // Traverse left
+        let left = this.inOrder(callback, Node.left);
+
+        // Apply callback function if it exists, else just get the value.
+        let parent = callback ? callback(Node.value) : Node.value;
+
+        // Traverse right.
+        let right = this.inOrder(callback, Node.right);
+
+        return [...left, parent, ...right];
+    }
 }
