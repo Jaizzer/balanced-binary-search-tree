@@ -174,4 +174,22 @@ class Tree {
 
         return [...left, parent, ...right];
     }
+
+    preOrder(callback, Node = this.root) {
+        // Base case.
+        if (Node === null) {
+            return [];
+        }
+
+        // Apply callback function if it exists, else just get the value.
+        let parent = callback ? callback(Node.value) : Node.value;
+
+        // Traverse left
+        let left = this.preOrder(callback, Node.left);
+
+        // Traverse right.
+        let right = this.preOrder(callback, Node.right);
+
+        return [parent, ...left, ...right];
+    }
 }
