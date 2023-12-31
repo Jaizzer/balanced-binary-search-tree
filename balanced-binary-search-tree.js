@@ -239,17 +239,17 @@ class Tree {
         return depth;
     }
 
-    isBalance(Node = this.root) {
+    isBalanced(Node = this.root) {
         // Base case: Null Node is balanced by default.
         if (!Node) {
             return true;
         }
 
         // Check if left subtree is balanced.
-        const isLeftBalance = this.isBalance(Node.left);
+        const isLeftBalance = this.isBalanced(Node.left);
 
         // Check if right subtree is balanced
-        const isRightBalance = this.isBalance(Node.right);
+        const isRightBalance = this.isBalanced(Node.right);
 
         // Check if current tree is balanced only if both of its subtree is balanced.
         if (isLeftBalance && isRightBalance) {
@@ -264,7 +264,7 @@ class Tree {
 
     rebalance() {
         // Balance only if the tree is unbalanced.
-        if (!this.isBalance()) {
+        if (!this.isBalanced()) {
             this.root = this.buildTree(this.inOrder());
         }
     }
