@@ -210,4 +210,16 @@ class Tree {
 
         return [...left, ...right, parent];
     }
+
+    height(Node) {
+        if (!Node) {
+            // Use -1 instead of 0 to prevent overcounting.
+            return -1;
+        }
+        const leftHeight = this.height(Node.left);
+        const rightHeight = this.height(Node.right);
+
+        // Always use the biger height.
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
 }
