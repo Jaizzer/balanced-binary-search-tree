@@ -222,4 +222,20 @@ class Tree {
         // Always use the biger height.
         return Math.max(leftHeight, rightHeight) + 1;
     }
+
+    depth(Node) {
+        let currentNode = this.root;
+        let depth = 0;
+
+        // Increase depth as we traverse the tree until Node is found.
+        while (currentNode !== Node) {
+            if (Node.value < currentNode.value) {
+                currentNode = currentNode.left;
+            } else {
+                currentNode = currentNode.right;
+            }
+            depth++;
+        }
+        return depth;
+    }
 }
