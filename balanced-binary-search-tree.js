@@ -239,6 +239,29 @@ class Tree {
         return depth;
     }
 
+    isBalance(Node = this.root) {
+        // Base case: Null Node is balanced by default.
+        if (!Node) {
+            return true;
+        }
+
+        // Check if left subtree is balanced.
+        const isLeftBalance = this.isBalance(Node.left);
+
+        // Check if right subtree is balanced
+        const isRightBalance = this.isBalance(Node.right);
+
+        // Check if current tree is balanced only if both of its subtree is balanced.
+        if (isLeftBalance && isRightBalance) {
+            const leftHeight = this.height(Node.left);
+            const rightHeight = this.height(Node.right);
+
+            // The difference between the height of the left and right subtree should be at most 1 for the tree to be balanced.
+            return Math.abs(leftHeight - rightHeight) <= 1;
+        }
+        return false;
+    }
+
     rebalance() {
         this.root = this.buildTree(this.inOrder());
     }
