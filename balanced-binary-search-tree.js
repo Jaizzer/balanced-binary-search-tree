@@ -263,6 +263,9 @@ class Tree {
     }
 
     rebalance() {
-        this.root = this.buildTree(this.inOrder());
+        // Balance only if the tree is unbalanced.
+        if (!this.isBalance()) {
+            this.root = this.buildTree(this.inOrder());
+        }
     }
 }
