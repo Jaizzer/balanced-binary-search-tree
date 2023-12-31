@@ -238,4 +238,8 @@ class Tree {
         }
         return depth;
     }
+
+    rebalance() {
+        this.root = this.buildTree(this.inOrder());
+    }
 }
